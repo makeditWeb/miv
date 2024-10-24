@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title layout:title-pattern="$CONTENT_TITLE - MIV">Layout</title>
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1, user-scalable=yes,initial-scale=1.0" />
+    
+    <!-- 공통 CSS -->
+    <link th:href="@{/css/common.css}" rel="stylesheet">
+    <link th:href="@{/css/output.css}" rel="stylesheet">
+    <link th:href="@{/css/font.css}" rel="stylesheet">
+    
+    <!-- 공통 JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:src="@{/js/common.js}"></script> <!-- 커스텀 JS -->
+    
+    <!-- 각 페이지별 추가 CSS/JS를 위한 영역 -->
+    <th:block layout:fragment="css"></th:block>
+    <th:block layout:fragment="script"></th:block>
+</head>
+<body>
+    <th:block th:replace="~{fragments/header :: header}"></th:block>
+    <th:block layout:fragment="content"></th:block>
+    <th:block th:replace="~{fragments/footer :: footer}"></th:block>
+    
+    <!-- 공통 스크립트 -->
+    <script th:src="@{/js/footer.js}"></script>
+</body>
+</html>

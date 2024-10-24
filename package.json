@@ -1,0 +1,19 @@
+{
+  "name": "miv_website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "npx postcss src/main/resources/static/css/common.css -o src/main/resources/static/css/output.css",
+    "watch:css": "postcss src/main/resources/static/css/common.css -o src/main/resources/static/css/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "postcss-cli": "^11.0.0",
+    "tailwindcss": "^3.4.14"
+  }
+}
