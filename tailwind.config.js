@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  mode: 'jit', 
   content: [
     "./src/main/resources/templates/**/*.html",
     "./src/main/resources/static/**/*.js",
@@ -12,10 +13,13 @@ module.exports = {
       },
       colors: {
         'custom-gray': '#333',
-        'custom-teal': '#2BCFBB'
+        'custom-teal': '#2BCFBB',
+        'custom-border-gray': 'rgba(51, 51, 51, 0.1)',
+        'custom-bg': 'rgba(51, 51, 51, 0.03)',
       },
       fontSize: {
-        'font-15': '0.9375rem'  // 15px를 rem으로 변환
+        'font-15': '0.9375rem',
+        'font-17': '17px'
       },
       borderColor: {
         'border-gray': '#ddd'

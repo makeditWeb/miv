@@ -18,9 +18,23 @@
   .flex-center-between{
     @apply flex items-center justify-between;
   }
+
+  .absolute-top-50{
+    @apply absolute top-2/4  translate-y-1/2;
+  }
+
+  .absolute-top-30{
+    @apply absolute top-1/3;
+  }
+
+  
 }
 
 @layer utilities {
+
+  .z-9{
+    z-index:9;
+  }
   .pt-30{
     padding-top: 30px;
   }
@@ -28,15 +42,154 @@
   .pt-50 {
     padding-top: 50px;
   }
+
+  .pt-100{
+    padding-top:100px;
+  }
+  .pb-50 {
+    padding-bottom: 50px;
+  }
+
+  .px-25px{
+    padding-left:25px;
+    padding-right:25px;
+  }
+
+
+  .py-30px{
+    padding-top:30px;
+    padding-bottom:30px;
+  }
+
+
+
+  .py-5px{
+    padding-top:5px;
+    padding-bottom:5px;
+  }
+
+  .mt-10{
+    margin-top:10px;
+  }
+
+  .mt-30{
+    margin-top:30px;
+  }
+
+  .mt-40{
+    margin-top:50px;
+  }
+
+  .mt-50{
+    margin-top:50px;
+  }
+
+  .mt-70{
+    margin-top:70px;
+  }
+
+
+  .mb-10{
+    margin-bottom:10px;
+  }
+
+  .mb-20{
+    margin-bottom:20px;
+  }
+
+  .mb-25{
+    margin-bottom:25px;
+  }
+
+  .mb-40{
+    margin-bottom:40px;
+  }
+
+  .mb-50{
+    margin-bottom:50px;
+  }
+
+  .mb-80{
+    margin-bottom:80px;
+  }
+
+  .mb-150{
+    margin-bottom:150px;
+  }
+
+  .mb-200{
+    margin-bottom:200px;
+  }
+
   .pb-100 {
     padding-bottom: 100px;
+  }
+
+  .px-30{
+    padding-left:30px;
+    padding-right:30px;
   }
 
   .c_gap-15{
     column-gap: 15px;
   }
 
+  .c_gap-5{
+    column-gap: 5px;
+  }
+
+  .black-font{
+    color:#202020;
+  }
+
+  .rounded-20px{
+    border-radius:20px;
+  }
+
+  .rounded-4xl{
+    border-radius:30px;
+  }
+
+  
 
 
+  .w-30{
+    width:120px;
+  }
 
+  .w-15{
+    width:60px;
+  }
+
+  .h-30{
+    height:120px;
+  }
+
+  .gap-col-15{
+    column-gap:15px;
+  }
+
+  .font-size_20{
+    font-size:20px;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .blue-gradient{
+    background: linear-gradient(116deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.30) 100%), #1677FF;
+  }
+
+  .green-gradient{
+    background: linear-gradient(116deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.30) 100%), #00A58C;
+
+  }
+
+  .purple-gradient{
+    background: linear-gradient(116deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.30) 100%), #511CFF;
+  }
 }

@@ -1,5 +1,16 @@
 
-    <footer th:fragment="footer">
+    <footer th:fragment="footer relative">
+
+        <div class="flex-center-center flex-col gap-4 fixed right-5 bottom-5">
+            <button id="topBtn" class="shadow-lg bg-white flex-center-center w-16 aspect-square rounded-full">
+                <img th:src="@{/images/top-btn.png}" alt="chat" class="w-8 h-8">
+            </button>
+
+            <a href="#" class="shadow-lg flex-center-center w-16 aspect-square rounded-full" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.20) 100%), linear-gradient(315deg, #FCDC2A 0%, #01CB99 80%);">
+                <img th:src="@{/images/chat_icon.png}" alt="chat" class="w-8 h-8">
+            </a>
+
+        </div>
 
         <div class="border-b border-t border-border-gray py-3.5">
             <ul class="web-container flex-center gap-16">
