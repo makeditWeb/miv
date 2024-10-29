@@ -2,73 +2,73 @@
     <footer th:fragment="footer relative">
 
         <div class="flex-center-center flex-col gap-4 fixed right-5 bottom-5">
-            <button id="topBtn" class="shadow-lg bg-white flex-center-center w-16 aspect-square rounded-full">
+            <button id="topBtn" class="shadow-lg bg-white flex-center-center w-16 aspect-square rounded-full" style="display: none;">
                 <img th:src="@{/images/top-btn.png}" alt="chat" class="w-8 h-8">
             </button>
-
-            <a href="#" class="shadow-lg flex-center-center w-16 aspect-square rounded-full" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.20) 100%), linear-gradient(315deg, #FCDC2A 0%, #01CB99 80%);">
+        
+            <a href="#" id="chatBtn" class="shadow-lg flex-center-center w-16 aspect-square rounded-full" style="display: none; background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.20) 100%), linear-gradient(315deg, #FCDC2A 0%, #01CB99 80%);">
                 <img th:src="@{/images/chat_icon.png}" alt="chat" class="w-8 h-8">
             </a>
-
         </div>
+        
 
-        <div class="border-b border-t border-border-gray py-3.5">
-            <ul class="web-container flex-center gap-16">
+        <div class="border-b border-t border-border-gray py-3.5 px-10 md:px-0">
+            <ul class="web-container flex-center justify-between md:justify-start md:gap-16">
                 <li>
-                    <a href="#" class="font-semibold text-custom-gray font-15">회사소개</a>
+                    <a href="#" class="font-semibold text-custom-gray text-font-13 md:text-font-15">회사소개</a>
                 </li>
                 <li>
-                    <a href="#" class="font-semibold text-custom-gray font-15">이용약관</a>
+                    <a href="#" class="font-semibold text-custom-gray text-font-13 md:text-font-15">이용약관</a>
                 </li>
                 <li>
-                    <a href="#" class="font-semibold text-custom-gray font-15">개인정보처리방침</a>
+                    <a href="#" class="font-semibold text-custom-gray text-font-13 md:text-font-15">개인정보처리방침</a>
                 </li>
                 <li>
-                    <a href="#" class="font-semibold text-custom-gray font-15">운영정책</a>
+                    <a href="#" class="font-semibold text-custom-gray text-font-13 md:text-font-15">운영정책</a>
                 </li>
             </ul>
         </div>
 
-        <div class="web-container pt-50">
+        <div class="web-container pt-50 pb-30 px-5 md:px-0">
             <img th:src="@{/images/logo.svg}" alt="MIV Logo" class="h-5">
-            <div class="flex-center-between pt-30 pb-100">
+            <div class="flex-start-col md:flex-center-between md:flex-row pt-30 pb-5 md:pb-100">
                 <div class="">
                     <ul class="flex-center mb-2.5 c_gap-15">
-                        <li class="text-font-15 text-custom-gray font-medium ">
+                        <li class="text-font-13 md:text-font-15 text-custom-gray font-medium ">
                             상호명: 미브
                         </li>
-                        <li  class="text-font-15 text-custom-gray font-medium">
+                        <li  class="text-font-13 md:text-font-15 text-custom-gray font-medium">
                             대표이사: 정운기
                         </li>
-                        <li  class="text-font-15 text-custom-gray font-medium"> 
+                        <li  class="text-font-13 md:text-font-15 text-custom-gray font-medium"> 
                             개인정보 보호 최고 책임자: 윤영한
                         </li>
                     </ul>
-                    <ul class="flex-center mb-2.5 c_gap-15">
-                        <li class="text-font-15 text-custom-gray font-medium">
+                    <ul class="flex-start-col md:flex-center md:flex-row mb-2.5 c_gap-15">
+                        <li class="text-font-13 md:text-font-15 text-custom-gray font-medium">
                             사업자등록번호: 000-00-00000 
                         </li>
-                        <li class="text-font-15 text-custom-gray font-medium">
+                        <li class="text-font-13 md:text-font-15 text-custom-gray font-medium">
                             통신판매업 신고번호: 제2023-서울강서-2258호
                         </li>
                     </ul>
-                    <ul class="flex-center mb-2.5 c_gap-15">
-                        <li class="text-font-15 text-custom-gray font-medium">
+                    <ul class="flex-start-col md:flex-center md:flex-row mb-2.5 c_gap-15">
+                        <li class="text-font-13 md:text-font-15 text-custom-gray font-medium">
                             주소: 서울특별시 마포구 연남로5길 30-8
                         </li>
-                        <li class="text-font-15 text-custom-gray font-medium">
+                        <li class="text-font-13 md:text-font-15 text-custom-gray font-medium">
                             이메일 주소: help@miv.co.kr
                         </li>
                     </ul>
                 </div>
                 <div class="">
-                    <p class="text-font-15 text-custom-gray font-bold">고객센터 <span class="text-3xl font-bold" >5555-5555</span></p>
-                    <p class="text-font-15 text-custom-gray font-bold">평일 09:30 ~ 17:00 (점심 12:00 ~ 13:00)</p>
-                    <p class="text-font-15 text-custom-gray font-bold">주말·공휴일 휴무</p>
+                    <p class="text-font-13 md:text-font-15 text-custom-gray font-bold">고객센터 <span class="text-3xl font-bold" >5555-5555</span></p>
+                    <p class="text-font-13 md:text-font-15 text-custom-gray font-bold">평일 09:30 ~ 17:00 (점심 12:00 ~ 13:00)</p>
+                    <p class="text-font-13 md:text-font-15 text-custom-gray font-bold">주말·공휴일 휴무</p>
                 </div>
 
             </div>
-            <p class="text-font-15 text-custom-gray font-medium">ⓒ 2024. MIV all right reserved.</p>
+            <p class="text-xs md:text-font-15 text-custom-font-gray font-medium" style="opacity: 0.4;">ⓒ 2024. MIV all right reserved.</p>
         </div>
     </footer>
 
