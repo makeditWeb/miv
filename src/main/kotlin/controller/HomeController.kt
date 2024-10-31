@@ -10,4 +10,19 @@ class HomeController {
     fun index(): String {
         return "index"  
     }
+
+    @GetMapping("/signup")
+    fun signUp(): String {
+        return "page/signup"
+    }
+
+    @GetMapping("/campaign/product-list")  
+        fun campaignProductList(): String {
+        return "page/campaign/product_list" 
+    }
+
+    @GetMapping("/campaign/location-list")  
+        fun campaignLocationList(): String {
+        return "page/campaign/location_list" 
+    }
 }

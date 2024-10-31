@@ -128,3 +128,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+
+// 페이지 로드 시 첫 번째 페이지 active
+document.addEventListener('DOMContentLoaded', () => {
+    const firstPage = document.querySelector('#pagination li:first-child');
+    if (firstPage) {
+        firstPage.classList.remove('opacity-20');
+        firstPage.classList.add('opacity-100');
+    }
+});
+
+// 클릭 이벤트 처리
+document.querySelectorAll('#pagination li').forEach(li => {
+    li.addEventListener('click', () => {
+        document.querySelectorAll('#pagination li').forEach(item => {
+            item.classList.remove('opacity-100');
+            item.classList.add('opacity-20');
+        });
+        
+        li.classList.remove('opacity-20');
+        li.classList.add('opacity-100');
+    });
+});

@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="ko"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/layout}">
+<head>
+    <title>캠페인-제품</title>
+</head>
+<body>
+    <div layout:fragment="content" class="md:pt-130 ">
+        <div class="web-container py-100px">
+            <h2 class="hidden md:block text-font-25 font-bold text-primary-10 mb-50 px-4 md:px-0">제품</h2>
+            
+            <!-- pc -->
+            <div class="hidden md:flex-center-between mb-50">
+                <ul class="filter-button flex-center gap-2">
+                    <li >
+                        <button class="bg-custom-bg rounded-10 px-5 py-2 selected">전체</button>
+                    </li>
+                    <li >
+                        <button class="bg-custom-bg rounded-10 px-5 py-2">생활</button>
+                    </li>
+                    <li >
+                        <button class="bg-custom-bg rounded-10 px-5 py-2">서비스</button>
+                    </li>
+                    <li >
+                        <button class="bg-custom-bg rounded-10 px-5 py-2">유아동</button>
+                    </li>
+                    <li >
+                        <button class="bg-custom-bg rounded-10 px-5 py-2">디지털</button>
+                    </li>
+                    <li >
+                        <button class="bg-custom-bg rounded-10 px-5 py-2">뷰티</button>
+                    </li>
+                    <li >
+                        <button class="bg-custom-bg rounded-10 px-5 py-2">패션</button>
+                    </li>
+                    <li >
+                        <button class="bg-custom-bg rounded-10 px-5 py-2">도시</button>
+                    </li>
+                    <li >
+                        <button class="bg-custom-bg rounded-10 px-5 py-2">식품</button>
+                    </li>
+                    <li >
+                        <button class="bg-custom-bg rounded-10 px-5 py-2">반려동물</button>
+                    </li>
+                </ul>
+
+                <div class="flex-center gap-2">
+                    <!-- 채널 드롭다운 -->
+                    <div class="relative" x-data="{ open: false, selectedOption: '전체 채널' }">
+                        <button @click="open = !open" 
+                                class="flex items-center justify-between appearance-none bg-white px-4 py-2.5 rounded-lg border border-custom-border-gray text-primary-10 opacity-70 font-medium min-w-[140px]">
+                            <span x-text="selectedOption"></span>
+                            <img th:src="@{/images/dropdown.png}" alt="dropdown" class="w-4 h-4 transition-transform duration-200"
+                                 :class="{ 'transform rotate-180': open }">
+                        </button>
+                        
+                        <div x-show="open" 
+                             @click.away="open = false"
+                             x-transition:enter="transition ease-out duration-100"
+                             x-transition:enter-start="transform opacity-0 scale-95"
+                             x-transition:enter-end="transform opacity-100 scale-100"
+                             class="absolute z-10 w-full mt-1 bg-white border border-custom-border-gray rounded-lg shadow-lg">
+                            <div class="py-1">
+                                <button @click="selectedOption = '전체 채널'; open = false" 
+                                        class="w-full text-left px-4 py-2 text-primary-10 hover:bg-primary-20/5">전체 채널</button>
+                                <button @click="selectedOption = '블로그'; open = false" 
+                                        class="w-full text-left px-4 py-2 text-primary-10 hover:bg-primary-20/5">블로그</button>
+                                <button @click="selectedOption = '인스타그램'; open = false" 
+                                        class="w-full text-left px-4 py-2 text-primary-10 hover:bg-primary-20/5">인스타그램</button>
+                                <button @click="selectedOption = '유튜브'; open = false" 
+                                        class="w-full text-left px-4 py-2 text-primary-10 hover:bg-primary-20/5">유튜브</button>
+                                <button @click="selectedOption = '틱톡'; open = false" 
+                                        class="w-full text-left px-4 py-2 text-primary-10 hover:bg-primary-20/5">틱톡</button>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- 정렬 드롭다운 -->
+                    <div class="relative" x-data="{ open: false, selectedOption: '최신순' }">
+                        <button @click="open = !open" 
+                                class="flex items-center justify-between appearance-none bg-white px-4 py-2.5 rounded-lg border border-custom-border-gray text-primary-10 opacity-70 font-medium min-w-[140px]">
+                            <span x-text="selectedOption"></span>
+                            <img th:src="@{/images/dropdown.png}" alt="dropdown" class="w-4 h-4 transition-transform duration-200"
+                                 :class="{ 'transform rotate-180': open }">
+                        </button>
+                        
+                        <div x-show="open" 
+                             @click.away="open = false"
+                             x-transition:enter="transition ease-out duration-100"
+                             x-transition:enter-start="transform opacity-0 scale-95"
+                             x-transition:enter-end="transform opacity-100 scale-100"
+                             class="absolute z-10 w-full mt-1 bg-white border border-custom-border-gray rounded-lg shadow-lg">
+                            <div class="py-1">
+                                <button @click="selectedOption = '최신순'; open = false" 
+                                        class="w-full text-left px-4 py-2 text-primary-10 hover:bg-primary-20/5">최신순</button>
+                                <button @click="selectedOption = 'option01'; open = false" 
+                                        class="w-full text-left px-4 py-2 text-primary-10 hover:bg-primary-20/5">option01</button>
+                                <button @click="selectedOption = 'option02'; open = false" 
+                                        class="w-full text-left px-4 py-2 text-primary-10 hover:bg-primary-20/5">option02</button>
+                                <button @click="selectedOption = 'option03'; open = false" 
+                                        class="w-full text-left px-4 py-2 text-primary-10 hover:bg-primary-20/5">option03</button>
+                                <button @click="selectedOption = 'option04'; open = false" 
+                                        class="w-full text-left px-4 py-2 text-primary-10 hover:bg-primary-20/5">option04</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- mobile -->
+
+            <div class="md:hidden mb-50 px-4 md:px-0">
+                <div class="flex-center-between mb-15">
+                    <h2 class="text-font-17 font-bold text-primary-10 px-4">제품</h2>
+
+                
+                    <div class="flex-center gap-2">
+                        <!-- 채널 드롭다운 -->
+                        <div class="relative" x-data="{ open: false, selectedOption: '전체 채널' }">
+                            <button @click="open = !open" 
+                                    class="flex items-center justify-between appearance-none bg-white px-4 py-2.5 rounded-lg border border-custom-border-gray text-primary-10 opacity-70 font-medium min-w-[100px]">
+                                <span x-text="selectedOption"></span>
+                                <img th:src="@{/images/dropdown.png}" alt="dropdown" class="w-4 h-4 transition-transform duration-200"
+                                     :class="{ 'transform rotate-180': open }">
+                            </button>
+                            
+                            <div x-show="open" 
+                                 @click.away="open = false"
+                                 x-transition:enter="transition ease-out duration-100"
+                                 x-transition:enter-start="transform opacity-0 scale-95"
+                                 x-transition:enter-end="transform opacity-100 scale-100"
+                                 class="absolute z-10 w-full mt-1 bg-white border border-custom-border-gray rounded-lg shadow-lg">
+                                <div class="py-1">
+                                    <button @click="selectedOption = '전체 채널'; open = false" 
+                                            class="w-full text-left px-4 py-2 text-primary-10 hover:bg-primary-20/5">전체 채널</button>
+                                    <button @click="selectedOption = '블로그'; open = false" 
+                                            class="w-full text-left px-4 py-2 text-primary-10 hover:bg-primary-20/5">블로그</button>
+                                    <button @click="selectedOption = '인스타그램'; open = false" 
+                                            class="w-full text-left px-4 py-2 text-primary-10 hover:bg-primary-20/5">인스타그램</button>
+                                    <button @click="selectedOption = '유튜브'; open = false" 
+                                            class="w-full text-left px-4 py-2 text-primary-10 hover:bg-primary-20/5">유튜브</button>
+                                    <button @click="selectedOption = '틱톡'; open = false" 
+                                            class="w-full text-left px-4 py-2 text-primary-10 hover:bg-primary-20/5">틱톡</button>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <!-- 정렬 드롭다운 -->
+                        <div class="relative" x-data="{ open: false, selectedOption: '최신순' }">
+                            <button @click="open = !open" 
+                                    class="flex items-center justify-between appearance-none bg-white px-4 py-2.5 rounded-lg border border-custom-border-gray text-primary-10 opacity-70 font-medium min-w-[100px]">
+                                <span x-text="selectedOption"></span>
+                                <img th:src="@{/images/dropdown.png}" alt="dropdown" class="w-4 h-4 transition-transform duration-200"
+                                     :class="{ 'transform rotate-180': open }">
+                            </button>
+                            
+                            <div x-show="open" 
+                                 @click.away="open = false"
+                                 x-transition:enter="transition ease-out duration-100"
+                                 x-transition:enter-start="transform opacity-0 scale-95"
+                                 x-transition:enter-end="transform opacity-100 scale-100"
+                                 class="absolute z-10 w-full mt-1 bg-white border border-custom-border-gray rounded-lg shadow-lg">
+                                <div class="py-1">
+                                    <button @click="selectedOption = '최신순'; open = false" 
+                                            class="w-full text-left px-4 py-2 text-primary-10 hover:bg-primary-20/5">최신순</button>
+                                    <button @click="selectedOption = 'option01'; open = false" 
+                                            class="w-full text-left px-4 py-2 text-primary-10 hover:bg-primary-20/5">option01</button>
+                                    <button @click="selectedOption = 'option02'; open = false" 
+                                            class="w-full text-left px-4 py-2 text-primary-10 hover:bg-primary-20/5">option02</button>
+                                    <button @click="selectedOption = 'option03'; open = false" 
+                                            class="w-full text-left px-4 py-2 text-primary-10 hover:bg-primary-20/5">option03</button>
+                                    <button @click="selectedOption = 'option04'; open = false" 
+                                            class="w-full text-left px-4 py-2 text-primary-10 hover:bg-primary-20/5">option04</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <ul class="filter-button flex-center gap-2 flex-wrap">
+                    <li >
+                        <button class="bg-custom-bg rounded-10 px-5 py-2 selected">전체</button>
+                    </li>
+                    <li >
+                        <button class="bg-custom-bg rounded-10 px-5 py-2">생활</button>
+                    </li>
+                    <li >
+                        <button class="bg-custom-bg rounded-10 px-5 py-2">서비스</button>
+                    </li>
+                    <li >
+                        <button class="bg-custom-bg rounded-10 px-5 py-2">유아동</button>
+                    </li>
+                    <li >
+                        <button class="bg-custom-bg rounded-10 px-5 py-2">디지털</button>
+                    </li>
+                    <li >
+                        <button class="bg-custom-bg rounded-10 px-5 py-2">뷰티</button>
+                    </li>
+                    <li >
+                        <button class="bg-custom-bg rounded-10 px-5 py-2">패션</button>
+                    </li>
+                    <li >
+                        <button class="bg-custom-bg rounded-10 px-5 py-2">도시</button>
+                    </li>
+                    <li >
+                        <button class="bg-custom-bg rounded-10 px-5 py-2">식품</button>
+                    </li>
+                    <li >
+                        <button class="bg-custom-bg rounded-10 px-5 py-2">반려동물</button>
+                    </li>
+                </ul>
+
+
+            </div>
+
+            <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-8 px-4 md:px-0">
+                <li>
+                    <div class="flex flex-col gap-x-2.5">
+                                
+                        <div class="relative mb-20">
+                            <div class="relative">
+                                <img th:src="@{/images/prodcut/list_01.png}" alt="slide 1" class="w-full md:w-[230px] aspect-square">
+                            </div>
+                            <button class="like-btn absolute bottom-3.5 right-3.5" data-liked="false">
+                                <img src="/images/heart_un.png" alt="like" class="w-[20px] md:w-[26px] aspect-square">
+                            </button>
+                        </div>
+
+                        <div class="flex flex-col gap-2.5">
+                            <div class="flex flex-col gap-2">
+                                <p class="main_slide_title">[전국] 순살왕만두 듬직세트 공격적인 포만감</p>
+                                <p class="custom-gray text-font-13 md:text-sm font-medium" style="opacity: 0.5;">이용권(쿠폰)</p>
+                            </div>
+
+                            <div class="flex-center c_gap-5">
+                                <p class="border border-custom-border bg-custom-bg text-xs font-bold px-2.5 py-5px rounded-md">10,000 P</p>
+                                <P class="border border-custom-border bg-custom-bg text-xs font-medium px-2.5 py-5px rounded-md"><span class="font-bold">콘텐츠</span> 2건</P>
+                            </div>
+
+                            <div class="flex-start-col md:flex-center-between md:flex-row">
+                                <div class="flex-center gap-x-2.5">
+                                    <img th:src="@{/images/youtube.png}" class="w-4 md:w-6 md:h-6" >
+                                    <p class="custom-gray text-font-11 md:text-base font-bold">D-7</p>
+                                </div>
+
+                                <div class="flex-center gap-x-2.5">
+                                    <div class="flex-center gap-x-2.5">
+                                        <img th:src="@{/images/main/group.png}" class="w-4 h-4">
+                                        <p class="custom-gray text-font-13 md:text-sm font-medium opacity-50">신청</p>
+                                    </div>
+                                    <p class="text-font-13 md:font-15 font-base text-primary-10 "><span class="font-bold text-primary-70">7</span> / 10</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="flex flex-col gap-x-2.5">
+                                
+                        <div class="relative mb-20">
+                            <div class="relative">
+                                <img th:src="@{/images/prodcut/list_02.png}" alt="slide 1" class="w-full md:w-[230px] aspect-square">
+                            </div>
+                            <button class="like-btn absolute bottom-3.5 right-3.5" data-liked="false">
+                                <img src="/images/heart_un.png" alt="like" class="w-[20px] md:w-[26px] aspect-square">
+                            </button>
+                        </div>
+
+                        <div class="flex flex-col gap-2.5">
+                            <div class="flex flex-col gap-2">
+                                <p class="main_slide_title">[초인기] 지금 가장 핫한 정육식당!</p>
+                                <p class="custom-gray text-font-13 md:text-sm font-medium" style="opacity: 0.5;">이용권(쿠폰)</p>
+                            </div>
+
+                            <div class="flex-center c_gap-5">
+                                <p class="border border-custom-border bg-custom-bg text-xs font-bold px-2.5 py-5px rounded-md">10,000 P</p>
+                                <P class="border border-custom-border bg-custom-bg text-xs font-medium px-2.5 py-5px rounded-md"><span class="font-bold">콘텐츠</span> 2건</P>
+                            </div>
+
+                            <div class="flex-start-col md:flex-center-between md:flex-row">
+                                <div class="flex-center gap-x-2.5">
+                                    <img th:src="@{/images/instagram.png}" class="w-4 md:w-6 md:h-6" >
+                                    <p class="custom-gray text-font-11 md:text-base font-bold">오늘까지</p>
+                                </div>
+
+                                <div class="flex-center gap-x-2.5">
+                                    <div class="flex-center gap-x-2.5">
+                                        <img th:src="@{/images/main/group.png}" class="w-4 h-4">
+                                        <p class="custom-gray text-font-13 md:text-sm font-medium opacity-50">신청</p>
+                                    </div>
+                                    <p class="text-font-13 md:font-15 font-base text-primary-10 "><span class="font-bold text-primary-80">7</span> / 10</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="flex flex-col gap-x-2.5">
+                                
+                        <div class="relative mb-20">
+                            <div class="relative">
+                                <img th:src="@{/images/prodcut/list_03.png}" alt="slide 1" class="w-full md:w-[230px] aspect-square">
+                            </div>
+                            <button class="like-btn absolute bottom-3.5 right-3.5" data-liked="false">
+                                <img src="/images/heart_un.png" alt="like" class="w-[20px] md:w-[26px] aspect-square">
+                            </button>
+                        </div>
+
+                        <div class="flex flex-col gap-2.5">
+                            <div class="flex flex-col gap-2">
+                                <p class="main_slide_title">[갓불고기] 두말 안 합니다 캠핑 초필수템 가족 식사 강추</p>
+                                <p class="custom-gray text-font-13 md:text-sm font-medium" style="opacity: 0.5;">이용권(쿠폰)</p>
+                            </div>
+
+                            <div class="flex-center c_gap-5">
+                                <p class="border border-custom-border bg-custom-bg text-xs font-bold px-2.5 py-5px rounded-md">10,000 P</p>
+                                <P class="border border-custom-border bg-custom-bg text-xs font-medium px-2.5 py-5px rounded-md"><span class="font-bold">콘텐츠</span> 2건</P>
+                            </div>
+
+                            <div class="flex-start-col md:flex-center-between md:flex-row">
+                                <div class="flex-center gap-x-2.5">
+                                    <img th:src="@{/images/ticktock.png}" class="w-4 md:w-6 md:h-6" >
+                                    <p class="custom-gray text-font-11 md:text-base font-bold">D-7</p>
+                                </div>
+
+                                <div class="flex-center gap-x-2.5">
+                                    <div class="flex-center gap-x-2.5">
+                                        <img th:src="@{/images/main/group.png}" class="w-4 h-4">
+                                        <p class="custom-gray text-font-13 md:text-sm font-medium opacity-50">신청</p>
+                                    </div>
+                                    <p class="text-font-13 md:font-15 font-base text-primary-10 "><span class="font-bold text-primary-10">0</span> / 10</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="flex flex-col gap-x-2.5">
+                                
+                        <div class="relative mb-20">
+                            <div class="relative">
+                                <img th:src="@{/images/prodcut/list_04.png}" alt="slide 1" class="w-full md:w-[230px] aspect-square">
+                            </div>
+                            <button class="like-btn absolute bottom-3.5 right-3.5" data-liked="false">
+                                <img src="/images/heart_un.png" alt="like" class="w-[20px] md:w-[26px] aspect-square">
+                            </button>
+                        </div>
+
+                        <div class="flex flex-col gap-2.5">
+                            <div class="flex flex-col gap-2">
+                                <p class="main_slide_title">[밀떡면볶이] 지금 가장 제일 먼저 빨리 먹어봐야 하는 떡볶이</p>
+                                <p class="custom-gray text-font-13 md:text-sm font-medium" style="opacity: 0.5;">이용권(쿠폰)</p>
+                            </div>
+
+                            <div class="flex-center c_gap-5">
+                                <p class="border border-custom-border bg-custom-bg text-xs font-bold px-2.5 py-5px rounded-md">10,000 P</p>
+                                <P class="border border-custom-border bg-custom-bg text-xs font-medium px-2.5 py-5px rounded-md"><span class="font-bold">콘텐츠</span> 2건</P>
+                            </div>
+
+                            <div class="flex-start-col md:flex-center-between md:flex-row">
+                                <div class="flex-center gap-x-2.5">
+                                    <img th:src="@{/images/youtube.png}" class="w-4 md:w-6 md:h-6" >
+                                    <p class="custom-gray text-font-11 md:text-base font-bold">D-1</p>
+                                </div>
+
+                                <div class="flex-center gap-x-2.5">
+                                    <div class="flex-center gap-x-2.5">
+                                        <img th:src="@{/images/main/group.png}" class="w-4 h-4">
+                                        <p class="custom-gray text-font-13 md:text-sm font-medium opacity-50">신청</p>
+                                    </div>
+                                    <p class="text-font-13 md:font-15 font-base text-primary-10 "><span class="font-bold text-primary-70">15</span> / 10</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="flex flex-col gap-x-2.5">
+                                
+                        <div class="relative mb-20">
+                            <div class="relative">
+                                <img th:src="@{/images/prodcut/list_05.png}" alt="slide 1" class="w-full md:w-[230px] aspect-square">
+                            </div>
+                            <button class="like-btn absolute bottom-3.5 right-3.5" data-liked="false">
+                                <img src="/images/heart_un.png" alt="like" class="w-[20px] md:w-[26px] aspect-square">
+                            </button>
+                        </div>
+
+                        <div class="flex flex-col gap-2.5">
+                            <div class="flex flex-col gap-2">
+                                <p class="main_slide_title">[소고기] 썸네일만으로 승부 가능</p>
+                                <p class="custom-gray text-font-13 md:text-sm font-medium" style="opacity: 0.5;">이용권(쿠폰)</p>
+                            </div>
+
+                            <div class="flex-center c_gap-5">
+                                <p class="border border-custom-border bg-custom-bg text-xs font-bold px-2.5 py-5px rounded-md">10,000 P</p>
+                                <P class="border border-custom-border bg-custom-bg text-xs font-medium px-2.5 py-5px rounded-md"><span class="font-bold">콘텐츠</span> 2건</P>
+                            </div>
+
+                            <div class="flex-start-col md:flex-center-between md:flex-row">
+                                <div class="flex-center gap-x-2.5">
+                                    <img th:src="@{/images/youtube.png}" class="w-4 md:w-6 md:h-6" >
+                                    <p class="custom-gray text-font-11 md:text-base font-bold">D-4</p>
+                                </div>
+
+                                <div class="flex-center gap-x-2.5">
+                                    <div class="flex-center gap-x-2.5">
+                                        <img th:src="@{/images/main/group.png}" class="w-4 h-4">
+                                        <p class="custom-gray text-font-13 md:text-sm font-medium opacity-50">신청</p>
+                                    </div>
+                                    <p class="text-font-13 md:font-15 font-base text-primary-10 "><span class="font-bold text-primary-70">10</span> / 10</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="flex flex-col gap-x-2.5">
+                                
+                        <div class="relative mb-20">
+                            <div class="relative">
+                                <img th:src="@{/images/prodcut/list_06.png}" alt="slide 1" class="w-full md:w-[230px] aspect-square">
+                            </div>
+                            <button class="like-btn absolute bottom-3.5 right-3.5" data-liked="false">
+                                <img src="/images/heart_un.png" alt="like" class="w-[20px] md:w-[26px] aspect-square">
+                            </button>
+                        </div>
+
+                        <div class="flex flex-col gap-2.5">
+                            <div class="flex flex-col gap-2">
+                                <p class="main_slide_title">[미리내양곱창] 양곱창을 좋아하면 모를 수 없습니다!</p>
+                                <p class="custom-gray text-font-13 md:text-sm font-medium" style="opacity: 0.5;">이용권(쿠폰)</p>
+                            </div>
+
+                            <div class="flex-center c_gap-5">
+                                <p class="border border-custom-border bg-custom-bg text-xs font-bold px-2.5 py-5px rounded-md">10,000 P</p>
+                                <P class="border border-custom-border bg-custom-bg text-xs font-medium px-2.5 py-5px rounded-md"><span class="font-bold">콘텐츠</span> 2건</P>
+                            </div>
+
+                            <div class="flex-start-col md:flex-center-between md:flex-row">
+                                <div class="flex-center gap-x-2.5">
+                                    <img th:src="@{/images/blog.png}" class="w-4 md:w-6 md:h-6" >
+                                    <p class="custom-gray text-font-11 md:text-base font-bold">D-12</p>
+                                </div>
+
+                                <div class="flex-center gap-x-2.5">
+                                    <div class="flex-center gap-x-2.5">
+                                        <img th:src="@{/images/main/group.png}" class="w-4 h-4">
+                                        <p class="custom-gray text-font-13 md:text-sm font-medium opacity-50">신청</p>
+                                    </div>
+                                    <p class="text-font-13 md:font-15 font-base text-primary-10 "><span class="font-bold text-primary-80">4</span> / 10</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="flex flex-col gap-x-2.5">
+                                
+                        <div class="relative mb-20">
+                            <div class="relative">
+                                <img th:src="@{/images/prodcut/list_07.png}" alt="slide 1" class="w-full md:w-[230px] aspect-square">
+                            </div>
+                            <button class="like-btn absolute bottom-3.5 right-3.5" data-liked="false">
+                                <img src="/images/heart_un.png" alt="like" class="w-[20px] md:w-[26px] aspect-square">
+                            </button>
+                        </div>
+
+                        <div class="flex flex-col gap-2.5">
+                            <div class="flex flex-col gap-2">
+                                <p class="main_slide_title">[지구아이스] 지구 모양 귀여운 아이스크림</p>
+                                <p class="custom-gray text-font-13 md:text-sm font-medium" style="opacity: 0.5;">이용권(쿠폰)</p>
+                            </div>
+
+                            <div class="flex-center c_gap-5">
+                                <p class="border border-custom-border bg-custom-bg text-xs font-bold px-2.5 py-5px rounded-md">10,000 P</p>
+                                <P class="border border-custom-border bg-custom-bg text-xs font-medium px-2.5 py-5px rounded-md"><span class="font-bold">콘텐츠</span> 2건</P>
+                            </div>
+
+                            <div class="flex-start-col md:flex-center-between md:flex-row">
+                                <div class="flex-center gap-x-2.5">
+                                    <img th:src="@{/images/instagram.png}" class="w-4 md:w-6 md:h-6" >
+                                    <p class="custom-gray text-font-11 md:text-base font-bold">오늘까지</p>
+                                </div>
+
+                                <div class="flex-center gap-x-2.5">
+                                    <div class="flex-center gap-x-2.5">
+                                        <img th:src="@{/images/main/group.png}" class="w-4 h-4">
+                                        <p class="custom-gray text-font-13 md:text-sm font-medium opacity-50">신청</p>
+                                    </div>
+                                    <p class="text-font-13 md:font-15 font-base text-primary-10 "><span class="font-bold text-primary-80">7</span> / 10</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="flex flex-col gap-x-2.5">
+                                
+                        <div class="relative mb-20">
+                            <div class="relative">
+                                <img th:src="@{/images/prodcut/list_08.png}" alt="slide 1" class="w-full md:w-[230px] aspect-square">
+                            </div>
+                            <button class="like-btn absolute bottom-3.5 right-3.5" data-liked="false">
+                                <img src="/images/heart_un.png" alt="like" class="w-[20px] md:w-[26px] aspect-square">
+                            </button>
+                        </div>
+
+                        <div class="flex flex-col gap-2.5">
+                            <div class="flex flex-col gap-2">
+                                <p class="main_slide_title">[전국] 어느 곳에서도 인스타그래머블 술집</p>
+                                <p class="custom-gray text-font-13 md:text-sm font-medium" style="opacity: 0.5;">이용권(쿠폰)</p>
+                            </div>
+
+                            <div class="flex-center c_gap-5">
+                                <p class="border border-custom-border bg-custom-bg text-xs font-bold px-2.5 py-5px rounded-md">10,000 P</p>
+                                <P class="border border-custom-border bg-custom-bg text-xs font-medium px-2.5 py-5px rounded-md"><span class="font-bold">콘텐츠</span> 2건</P>
+                            </div>
+
+                            <div class="flex-start-col md:flex-center-between md:flex-row">
+                                <div class="flex-center gap-x-2.5">
+                                    <img th:src="@{/images/youtube.png}" class="w-4 md:w-6 md:h-6" >
+                                    <p class="custom-gray text-font-11 md:text-base font-bold">D-7</p>
+                                </div>
+
+                                <div class="flex-center gap-x-2.5">
+                                    <div class="flex-center gap-x-2.5">
+                                        <img th:src="@{/images/main/group.png}" class="w-4 h-4">
+                                        <p class="custom-gray text-font-13 md:text-sm font-medium opacity-50">신청</p>
+                                    </div>
+                                    <p class="text-font-13 md:font-15 font-base text-primary-10 "><span class="font-bold text-primary-70">256</span> / 10</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="flex flex-col gap-x-2.5">
+                                
+                        <div class="relative mb-20">
+                            <div class="relative">
+                                <img th:src="@{/images/prodcut/list_09.png}" alt="slide 1" class="w-full md:w-[230px] aspect-square">
+                            </div>
+                            <button class="like-btn absolute bottom-3.5 right-3.5" data-liked="false">
+                                <img src="/images/heart_un.png" alt="like" class="w-[20px] md:w-[26px] aspect-square">
+                            </button>
+                        </div>
+
+                        <div class="flex flex-col gap-2.5">
+                            <div class="flex flex-col gap-2">
+                                <p class="main_slide_title">[킹샌드위치] 우리의 샌드위치는 식사 대용으로 모자라지 않습니다!</p>
+                                <p class="custom-gray text-font-13 md:text-sm font-medium" style="opacity: 0.5;">이용권(쿠폰)</p>
+                            </div>
+
+                            <div class="flex-center c_gap-5">
+                                <p class="border border-custom-border bg-custom-bg text-xs font-bold px-2.5 py-5px rounded-md">10,000 P</p>
+                                <P class="border border-custom-border bg-custom-bg text-xs font-medium px-2.5 py-5px rounded-md"><span class="font-bold">콘텐츠</span> 2건</P>
+                            </div>
+
+                            <div class="flex-start-col md:flex-center-between md:flex-row">
+                                <div class="flex-center gap-x-2.5">
+                                    <img th:src="@{/images/youtube.png}" class="w-4 md:w-6 md:h-6" >
+                                    <p class="custom-gray text-font-11 md:text-base font-bold">D-1</p>
+                                </div>
+
+                                <div class="flex-center gap-x-2.5">
+                                    <div class="flex-center gap-x-2.5">
+                                        <img th:src="@{/images/main/group.png}" class="w-4 h-4">
+                                        <p class="custom-gray text-font-13 md:text-sm font-medium opacity-50">신청</p>
+                                    </div>
+                                    <p class="text-font-13 md:font-15 font-base text-primary-10 "><span class="font-bold text-primary-70">15</span> / 10</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="flex flex-col gap-x-2.5">
+                                
+                        <div class="relative mb-20">
+                            <div class="relative">
+                                <img th:src="@{/images/prodcut/list_10.png}" alt="slide 1" class="w-full md:w-[230px] aspect-square">
+                            </div>
+                            <button class="like-btn absolute bottom-3.5 right-3.5" data-liked="false">
+                                <img src="/images/heart_un.png" alt="like" class="w-[20px] md:w-[26px] aspect-square">
+                            </button>
+                        </div>
+
+                        <div class="flex flex-col gap-2.5">
+                            <div class="flex flex-col gap-2">
+                                <p class="main_slide_title">[교동스낵] 성수동 초인기 카페</p>
+                                <p class="custom-gray text-font-13 md:text-sm font-medium" style="opacity: 0.5;">이용권(쿠폰)</p>
+                            </div>
+
+                            <div class="flex-center c_gap-5">
+                                <p class="border border-custom-border bg-custom-bg text-xs font-bold px-2.5 py-5px rounded-md">10,000 P</p>
+                                <P class="border border-custom-border bg-custom-bg text-xs font-medium px-2.5 py-5px rounded-md"><span class="font-bold">콘텐츠</span> 2건</P>
+                            </div>
+
+                            <div class="flex-start-col md:flex-center-between md:flex-row">
+                                <div class="flex-center gap-x-2.5">
+                                    <img th:src="@{/images/blog.png}" class="w-4 md:w-6 md:h-6" >
+                                    <p class="custom-gray text-font-11 md:text-base font-bold">D-12</p>
+                                </div>
+
+                                <div class="flex-center gap-x-2.5">
+                                    <div class="flex-center gap-x-2.5">
+                                        <img th:src="@{/images/main/group.png}" class="w-4 h-4">
+                                        <p class="custom-gray text-font-13 md:text-sm font-medium opacity-50">신청</p>
+                                    </div>
+                                    <p class="text-font-13 md:font-15 font-base text-primary-10 "><span class="font-bold text-primary-80">4</span> / 10</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="flex flex-col gap-x-2.5">
+                                
+                        <div class="relative mb-20">
+                            <div class="relative">
+                                <img th:src="@{/images/prodcut/list_11.png}" alt="slide 1" class="w-full md:w-[230px] aspect-square">
+                            </div>
+                            <button class="like-btn absolute bottom-3.5 right-3.5" data-liked="false">
+                                <img src="/images/heart_un.png" alt="like" class="w-[20px] md:w-[26px] aspect-square">
+                            </button>
+                        </div>
+
+                        <div class="flex flex-col gap-2.5">
+                            <div class="flex flex-col gap-2">
+                                <p class="main_slide_title">[순젤] zero sugar! 건강하고 맛있는 젤라또</p>
+                                <p class="custom-gray text-font-13 md:text-sm font-medium" style="opacity: 0.5;">이용권(쿠폰)</p>
+                            </div>
+
+                            <div class="flex-center c_gap-5">
+                                <p class="border border-custom-border bg-custom-bg text-xs font-bold px-2.5 py-5px rounded-md">10,000 P</p>
+                                <P class="border border-custom-border bg-custom-bg text-xs font-medium px-2.5 py-5px rounded-md"><span class="font-bold">콘텐츠</span> 2건</P>
+                            </div>
+
+                            <div class="flex-start-col md:flex-center-between md:flex-row">
+                                <div class="flex-center gap-x-2.5">
+                                    <img th:src="@{/images/ticktock.png}" class="w-4 md:w-6 md:h-6" >
+                                    <p class="custom-gray text-font-11 md:text-base font-bold">D-25</p>
+                                </div>
+
+                                <div class="flex-center gap-x-2.5">
+                                    <div class="flex-center gap-x-2.5">
+                                        <img th:src="@{/images/main/group.png}" class="w-4 h-4">
+                                        <p class="custom-gray text-font-13 md:text-sm font-medium opacity-50">신청</p>
+                                    </div>
+                                    <p class="text-font-13 md:font-15 font-base text-primary-10 "><span class="font-bold text-primary-10">0</span> / 10</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="flex flex-col gap-x-2.5">
+                                
+                        <div class="relative mb-20">
+                            <div class="relative">
+                                <img th:src="@{/images/prodcut/list_12.png}" alt="slide 1" class="w-full md:w-[230px] aspect-square">
+                            </div>
+                            <button class="like-btn absolute bottom-3.5 right-3.5" data-liked="false">
+                                <img src="/images/heart_un.png" alt="like" class="w-[20px] md:w-[26px] aspect-square">
+                            </button>
+                        </div>
+
+                        <div class="flex flex-col gap-2.5">
+                            <div class="flex flex-col gap-2">
+                                <p class="main_slide_title">[REAL붕어] 타이야키만이 붕어빵의 정점임을 알려 드리겠습니다!</p>
+                                <p class="custom-gray text-font-13 md:text-sm font-medium" style="opacity: 0.5;">이용권(쿠폰)</p>
+                            </div>
+
+                            <div class="flex-center c_gap-5">
+                                <p class="border border-custom-border bg-custom-bg text-xs font-bold px-2.5 py-5px rounded-md">10,000 P</p>
+                                <P class="border border-custom-border bg-custom-bg text-xs font-medium px-2.5 py-5px rounded-md"><span class="font-bold">콘텐츠</span> 2건</P>
+                            </div>
+
+                            <div class="flex-start-col md:flex-center-between md:flex-row">
+                                <div class="flex-center gap-x-2.5">
+                                    <img th:src="@{/images/youtube.png}" class="w-4 md:w-6 md:h-6" >
+                                    <p class="custom-gray text-font-11 md:text-base font-bold">D-4</p>
+                                </div>
+
+                                <div class="flex-center gap-x-2.5">
+                                    <div class="flex-center gap-x-2.5">
+                                        <img th:src="@{/images/main/group.png}" class="w-4 h-4">
+                                        <p class="custom-gray text-font-13 md:text-sm font-medium opacity-50">신청</p>
+                                    </div>
+                                    <p class="text-font-13 md:font-15 font-base text-primary-10 "><span class="font-bold text-primary-70">10</span> / 10</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        
+
+            <div class="flex-center-center gap-x-4 md:gap-x-8 mt-50">
+                <div class="flex-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+                        <path d="M16.125 16.75L9.875 10.5L16.125 4.25" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9.875 16.75L3.625 10.5L9.875 4.25" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+                        <path d="M13 16.75L6.75 10.5L13 4.25" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+                <ul class="flex-center gap-x-4 md:gap-x-8"  id="pagination">
+                    <li class="cursor-pointer text-primary-10 opacity-100 text-font-15 font-bold">1</li>
+                    <li class="cursor-pointer text-primary-10 opacity-20 text-font-15 font-bold">2</li>
+                    <li class="cursor-pointer text-primary-10 opacity-20 text-font-15 font-bold">3</li>
+                    <li class="cursor-pointer text-primary-10 opacity-20 text-font-15 font-bold">4</li>
+                    <li class="cursor-pointer text-primary-10 opacity-20 text-font-15 font-bold">5</li>
+                    <li class="cursor-pointer text-primary-10 opacity-20 text-font-15 font-bold">6</li>
+                    <li class="cursor-pointer text-primary-10 opacity-20 text-font-15 font-bold">7</li>
+                    <li class="cursor-pointer text-primary-10 opacity-20 text-font-15 font-bold">8</li>
+                </ul>
+
+                <div class="flex-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+                        <path d="M8 4.25L14.25 10.5L8 16.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+                        <path d="M4.875 4.25L11.125 10.5L4.875 16.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11.125 4.25L17.375 10.5L11.125 16.75" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+         <!-- 페이지별 추가 JavaScript -->
+         <th:block layout:fragment="script">
+            <script th:src="@{/js/page.js}"></script>
+            <script src="//unpkg.com/alpinejs" defer></script>
+        </th:block>
+</body>
+</html>
