@@ -2,19 +2,19 @@
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/empty-layout}"> 
+      layout:decorate="~{layouts/empty-layout}">
 <head>
     <title>회원가입</title>
-    
+
     <th:block layout:fragment="css">
-   
+
     </th:block>
 </head>
 <body>
     <main layout:fragment="content">
         <div class="bg-primary-85 w-screen h-screen ">
             <div class="flex-center-center flex-col h-full max-w-[350px] mx-auto">
-                <img th:src="@{/images/logo.svg}" alt="logo" class=" mb-65">
+                <img th:src="@{/images/logo.png}" alt="logo" class=" mb-65">
                 <div class="flex-center flex-col w-full gap-2.5 mb-15">
                     <a href="#" class="w-full relative rounded-2xl border border-primary-60 bg-white flex-center-center h-[60px] px-30px ">
                         <img th:src="@{/images/sign/mail.png}" alt="mail" class="w-[50px] aspect-square absolute left-[30px]">
@@ -38,7 +38,7 @@
                     </a>
                 </div>
                 <div class="flex-center-center gap-2.5 mb-35">
-                    <p class="font-bold text-primary-10 text-sm opacity-50">이미 회원이신가요?</p> 
+                    <p class="font-bold text-primary-10 text-sm opacity-50">이미 회원이신가요?</p>
                     <a href="#" class="font-bold text-primary-20">로그인</a>
                 </div>
                 <ul class="flex-center-between w-full ">
